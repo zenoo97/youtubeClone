@@ -1,0 +1,228 @@
+:root {
+  /* 변수 정의를 해서 사용하자 */
+  /* Color */
+  --white-color: #fff;
+  --black-color: #140a00;
+  --blue-color: #045fd4;
+  --red-color: #ff0000;
+  --grey-dark-color: #909090;
+  --grey-light-color: #e0e0e0;
+  /* Size */
+  --padding: 12px;
+  --avatar-size: 36px;
+
+  /* Font Size */
+  --font-large: 18px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+button,
+button:focus {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  /* button의 디자인 없애기 */
+}
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding);
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+header .logo {
+  font-size: var(--font-large);
+}
+header .logo i {
+  color: var(--red-color);
+}
+header .icons .fa-search {
+  margin-right: var(--padding);
+}
+/* SASS & LESS */
+/* 위에 코드를 보면 header가 겹쳐있다 -> 중복해서 쓰지 않기 위해서 나온 개념 */
+/* react는 PostCSS를 사용한다 */
+
+/* Video Player */
+iframe {
+  width: 100%;
+  height: 350px;
+  max-width: 1000px;
+  /* 너비의 max를 지정 */
+}
+
+.player {
+  text-align: center;
+  background-color: var(--black-color);
+  position: sticky;
+  /* 스크롤을 내려도 고정시키기 */
+  top: 0;
+  /* position: sticky를 했을 때, position, 즉 스크롤을 내렸을 떄, 어디서부터 멈춰있을지 정해주는 것 */
+}
+
+body > .info {
+  padding: var(--padding);
+}
+.info .metadata .hashtags {
+  display: flex;
+  font-size: var(--font-small);
+  color: var(--blue-color);
+}
+.info .metadata .hashtags li {
+  margin-right: var(--padding);
+}
+
+.info .metadata .titleAndButton {
+  display: flex;
+}
+.info .metadata .titleAndButton .title {
+  font-size: var(--font-medium);
+  margin-right: var(--padding);
+}
+.info .metadata .titleAndButton .title.clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.info .metadata .titleAndButton .moreBtn.clicked {
+  transform: rotate(180deg);
+  /* 움직이고 변화하는 것은 transform */
+}
+/* css line clamp검색! -> 설명을 2~3줄로 ... 나오게 하는 방법
+컨텐츠 내용을 제한하는법 */
+.info .metadata .titleAndButton .moreBtn {
+  height: 100%;
+  /* transition은 애니메이션 */
+  background-color: var(--white-color);
+  transition: transform 300ms ease-in-out;
+}
+.info .views {
+  font-size: var(--font-small);
+  color: var(--grey-dark-color);
+}
+
+.info .actions {
+  display: flex;
+  justify-content: space-around;
+  margin: var(--padding) 0;
+}
+.info .actions button {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-small);
+  color: var(--grey-dark-color);
+  background-color: white;
+}
+.info .actions button i {
+  margin: 0 auto;
+  margin-bottom: calc(var(--padding) / 2);
+  font-size: 16px;
+}
+.info .actions button i.active {
+  color: var(--blue-color);
+}
+.info .channel {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--grey-light-color);
+  border-bottom: 1px solid var(--grey-light-color);
+  padding: var(--padding);
+}
+.info .channel .metadata {
+  display: flex;
+  align-items: center;
+}
+.info .channel .metadata img {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+}
+.info .channel .metadata .info {
+  display: flex;
+  flex-direction: column;
+}
+.info .channel .metadata .info .name {
+  font-size: var(--font-medium);
+}
+.info .channel .metadata .info .subscribers {
+  color: var(--grey-dark-color);
+  font-size: var(--font-medium);
+}
+.info .channel .subscribe {
+  background-color: var(--white-color);
+  text-transform: uppercase;
+  color: var(--red-color);
+  font-size: var(--font-medium);
+}
+/* UpNext */
+.upNext {
+  padding: 0 var(--padding);
+}
+.upNext > .title {
+  font-size: var(--font-medium);
+  color: var(--grey-dark-color);
+  margin-bottom: calc(var(--padding) / 2);
+}
+.upNext .item {
+  display: flex;
+}
+.upNext .item .img {
+  flex: 1 1 35%;
+  margin-right: var(--padding);
+}
+.upNext .item .img img {
+  width: 100%;
+}
+.upNext .item .info {
+  flex: 1 1 60%;
+}
+.upNext .item .moreBtn {
+  flex: 1 1 5%;
+  height: 100%;
+  background-color: var(--white-color);
+}
+.upNext .item .info {
+  display: flex;
+  flex-direction: column;
+}
+.more {
+  background-color: var(--white-color);
+}
+
+.upNext .item .info .title {
+  font-size: var(--font-small);
+}
+.upNext .item .info .name,
+.upNext .item .info .views {
+  font-size: var(--font-micro);
+  color: var(--grey-dark-color);
+}
+
+.infoAndUpNext {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .infoAndUpNext {
+    flex-direction: row;
+    margin: var(--padding) 0;
+    padding: 10px;
+  }
+  .infoAndUpNext .info {
+    flex: 1 1 40%;
+  }
+  .infoAndUpNext .upNext {
+    flex: 1 1 60%;
+  }
+}
